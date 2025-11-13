@@ -1,16 +1,16 @@
-# 🛒 Online Retail Sales Analysis
+# 🚀 Startup Growth and Funding Trends Analysis
 
 ## 📊 Projektübersicht
 
-Dieses Projekt analysiert Verkaufsdaten eines Online-Shops, um datenbasierte Erkenntnisse über Kaufverhalten, Umsatztrends und Kundensegmente zu gewinnen. Im Rahmen einer Gruppenarbeit werden Python-Bibliotheken wie Pandas, NumPy, Matplotlib und Seaborn eingesetzt, um explorative Datenanalysen durchzuführen und aussagekräftige Visualisierungen zu erstellen.
+Dieses Projekt analysiert Wachstums- und Finanzierungsdaten von Startups, um datenbasierte Erkenntnisse über Erfolgsfaktoren, Finanzierungsmuster und Branchentrends zu gewinnen. Im Rahmen einer Gruppenarbeit werden Python-Bibliotheken wie Pandas, NumPy, Matplotlib und Seaborn eingesetzt, um explorative Datenanalysen durchzuführen und aussagekräftige Visualisierungen zu erstellen.
 
 ## 🎯 Projektziel
 
-Identifikation von Umsatzpotenzialen und Entwicklung von Handlungsempfehlungen für:
-- Optimierung der Produktstrategie
-- Gezielte Kundenansprache nach Segmenten
-- Effizienteren Einsatz von Marketing-Ressourcen
-- Verbesserung der Kundenbindung
+Identifikation von Erfolgsmustern und Entwicklung von Erkenntnissen für:
+- Verständnis von Finanzierungstrends im Startup-Ökosystem
+- Analyse von Wachstumsmustern erfolgreicher Startups
+- Identifikation von Branchentrends und Investitionsschwerpunkten
+- Faktoren für erfolgreiche Funding-Runden
 
 ## 📁 Projektstruktur
 
@@ -24,45 +24,52 @@ DS-Projekt-Online-Retail/
 
 ## 📈 Datensatz
 
-**Quelle:** [Kaggle - Online Shop Customer Sales Data](https://www.kaggle.com/datasets/onlineretailshop/online-shop-customer-sales-data)
+**Quelle:** [Kaggle - Startup Growth and Funding Trends](https://www.kaggle.com/datasets/samayashar/startup-growth-and-funding-trends)
 
 **Beschreibung:**  
-Transaktionsdaten eines internationalen Online-Einzelhändlers mit folgenden Variablen:
+Umfassende Daten über Startups, ihre Finanzierungsrunden, Wachstumsmetriken und Unternehmensentwicklung. Der Datensatz enthält Informationen zu:
+
+- **Unternehmensdetails:** Name, Gründungsjahr, Branche, Standort
+- **Finanzierung:** Funding-Runden, Investitionsvolumen, Investoren
+- **Wachstum:** Mitarbeiterentwicklung, Umsatzwachstum, Bewertung
+- **Performance:** Erfolgsmetriken, Exit-Status, Entwicklungsstadium
+
+**Zentrale Variablen:**
 
 | Variable | Typ | Beschreibung |
-|----------|-----|--------------|
-| Transaction ID | Numerisch | Eindeutige Transaktionsnummer |
-| Date | Datum | Zeitpunkt der Transaktion |
-| Customer ID | Numerisch | Kundenidentifikation |
-| Gender | Kategorial | Geschlecht (Male/Female) |
-| Age | Numerisch | Alter des Kunden |
-| Product Category | Kategorial | Produktkategorie |
-| Quantity | Numerisch | Anzahl der Produkte |
-| Price per Unit | Numerisch | Einzelpreis |
-| Total Amount | Numerisch | Gesamtumsatz |
+|----------|-----|--------------||
+| Company Name | Text | Name des Startups |
+| Founded Year | Numerisch | Gründungsjahr |
+| Industry | Kategorial | Branche/Sektor |
+| Location | Text | Standort/Region |
+| Funding Amount | Numerisch | Erhaltene Finanzierung |
+| Number of Employees | Numerisch | Mitarbeiteranzahl |
+| Funding Stage | Kategorial | Finanzierungsphase (Seed, Series A/B/C, etc.) |
+| Valuation | Numerisch | Unternehmensbewertung |
+| Status | Kategorial | Aktueller Status (Operating, Acquired, IPO, Closed) |
 
 ## 🔍 Analyseschwerpunkte
 
 ### 1. Datenimport & Vorbereitung
-- Laden und Inspektion der Daten
+- Laden und Inspektion der Startup-Daten
 - Data Cleaning (fehlende Werte, Duplikate, Ausreißer)
-- Datentyp-Konvertierung
+- Datentyp-Konvertierung und Formatierung
 
 ### 2. Explorative Datenanalyse (EDA)
-- Deskriptive Statistiken
-- Umsatzanalyse nach Produktkategorien
-- Zeitreihenanalyse (Trends, Saisonalität)
-- Kundenanalyse (Demografie, Kaufverhalten)
+- Deskriptive Statistiken zu Finanzierung und Wachstum
+- Finanzierungsanalyse nach Branchen und Regionen
+- Zeitreihenanalyse (Gründungstrends, Funding-Wellen)
+- Erfolgsanalyse (Exits, IPOs, Bewertungsentwicklung)
 
 ### 3. Visualisierungen
-- Zeitliche Umsatzentwicklung
-- Top-Produktkategorien
-- Kundensegmente nach Alter und Geschlecht
-- Umsatzverteilungen
+- Finanzierungstrends über Zeit
+- Top-Branchen und Investitionsschwerpunkte
+- Geografische Verteilung von Startups und Funding
+- Erfolgsquoten nach Funding-Stage
 
 ### 4. Erkenntnisse & Handlungsempfehlungen
-- Wichtigste Findings
-- Business-relevante Empfehlungen
+- Wichtigste Erfolgsfaktoren
+- Branchentrends und Investitionsmuster
 - Limitationen der Analyse
 
 ## 🛠️ Verwendete Technologien
@@ -112,10 +119,10 @@ jupyter notebook project.ipynb
    - Data Cleaning
 
 3. **Explorative Datenanalyse**
-   - Umsatzanalyse
+   - Finanzierungsanalyse
    - Zeitreihenanalyse
-   - Produktanalyse
-   - Kundenanalyse
+   - Branchenanalyse
+   - Erfolgsanalyse
 
 4. **Visualisierungen**
    - Trends und Muster
