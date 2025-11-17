@@ -3,3 +3,6 @@ numpy
 plotly
 seaborn
 scipy
+scikit-learn
+matplotlib
+
