@@ -6,10 +6,10 @@ Dieses Data-Science-Projekt analysiert Wachstums- und Finanzierungsdaten von 500
 
 ## 👥 Gruppenmitglieder
 
--Engel, Silas
--Nolepa, Mark
--Schneider, Tom
--Trölenberg, Lukas
+- Engel, Silas
+- Nolepa, Mark
+- Schneider, Tom
+- Trölenberg, Lukas
 
 ## 🎯 Geschäftsziel
 
@@ -267,4 +267,5 @@ Der Datensatz wird gemäß der Kaggle-Nutzungsbedingungen verwendet. Dieses Proj
 ---
 
 **Projektarbeit im Rahmen des Kurses "Introduction to Data Science"**  
+
 © 2025 | Tom Scheider, Mark Nolepa, Lukas Trölenberg, Silas Engel
