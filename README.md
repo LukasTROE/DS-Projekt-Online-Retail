@@ -1,25 +1,41 @@
-# 🚀 Startup Growth and Funding Trends Analysis
+# 🚀 Startup Growth & Funding Trends Analysis
 
 ## 📊 Projektübersicht
 
-Dieses Projekt analysiert Wachstums- und Finanzierungsdaten von Startups, um datenbasierte Erkenntnisse über Erfolgsfaktoren, Finanzierungsmuster und Branchentrends zu gewinnen. Im Rahmen einer Gruppenarbeit werden Python-Bibliotheken wie Pandas, NumPy, Matplotlib und Seaborn eingesetzt, um explorative Datenanalysen durchzuführen und aussagekräftige Visualisierungen zu erstellen.
+Dieses Data-Science-Projekt analysiert Wachstums- und Finanzierungsdaten von 500 Startups, um **profitable Investments für Investoren zu identifizieren**. Durch Machine Learning und explorative Datenanalyse werden Erfolgsmuster erkannt und ein **Empfehlungsmodell** entwickelt, das datenbasierte Investitionsentscheidungen unterstützt und psychologische Verzerrungen (Biases) reduziert.
 
-## 🎯 Projektziel
+## 👥 Gruppenmitglieder
 
-Identifikation von Erfolgsmustern und Entwicklung von Erkenntnissen für:
-- Verständnis von Finanzierungstrends im Startup-Ökosystem
-- Analyse von Wachstumsmustern erfolgreicher Startups
-- Identifikation von Branchentrends und Investitionsschwerpunkten
-- Faktoren für erfolgreiche Funding-Runden
+-Engel, Silas
+-Nolepa, Mark
+-Schneider, Tom
+-Trölenberg, Lukas
+
+## 🎯 Geschäftsziel
+
+**Hauptziel:** Große Mengen an Startups ressourceneffizient bewerten und profitable Investments identifizieren.
+
+**Kernfragen:**
+- Welche Kennzahlen beeinflussen die Profitabilität für Investoren?
+- Wie gut kann ein datenbasiertes Modell die Profitabilität von Startups vorhersagen?
+- In welche Startups mit hohem Wachstumspotenzial sollte investiert werden?
+
+**Nutzen:**
+- Objektive Bewertung statt Bauchgefühl
+- Risikominimierung durch datenbasierte Analyse
+- Effiziente Filterung vielversprechender Startups
+- Reduktion von Confirmation Bias, Halo-Effekt und Recency Bias
 
 ## 📁 Projektstruktur
 
 ```
-DS-Projekt-Online-Retail/
+DS-Projekt-Startup-Growth-final/
 │
-├── project.ipynb          # Hauptanalyse-Notebook
-├── README.md              # Projektdokumentation
-└── data/                  # Datensatz (optional lokal)
+├── Startup.ipynb          # Hauptanalyse-Notebook
+├── startup_data.csv       # Datensatz (500 Startups)
+├── requirements.txt       # Python-Abhängigkeiten
+├── Dockerfile             # Container-Setup
+└── README.md              # Projektdokumentation
 ```
 
 ## 📈 Datensatz
@@ -34,108 +50,221 @@ Umfassende Daten über Startups, ihre Finanzierungsrunden, Wachstumsmetriken und
 - **Wachstum:** Mitarbeiterentwicklung, Umsatzwachstum, Bewertung
 - **Performance:** Erfolgsmetriken, Exit-Status, Entwicklungsstadium
 
-**Zentrale Variablen:**
+**Zentrale Variablen (500 Startups):**
 
 | Variable | Typ | Beschreibung |
-|----------|-----|--------------||
-| Company Name | Text | Name des Startups |
-| Founded Year | Numerisch | Gründungsjahr |
-| Industry | Kategorial | Branche/Sektor |
-| Location | Text | Standort/Region |
-| Funding Amount | Numerisch | Erhaltene Finanzierung |
+|----------|-----|--------------|
+| Startup Name | Text | Name des Startups |
+| Industry | Kategorial | Branche (EdTech, FinTech, HealthTech, E-Commerce, CleanTech) |
+| Region | Kategorial | Region (North America, Europe, Asia) |
+| Funding Amount (M USD) | Numerisch | Investitionssumme in Mio. USD |
+| Valuation (M USD) | Numerisch | Unternehmensbewertung in Mio. USD |
+| Revenue (M USD) | Numerisch | Umsatz in Mio. USD |
 | Number of Employees | Numerisch | Mitarbeiteranzahl |
-| Funding Stage | Kategorial | Finanzierungsphase (Seed, Series A/B/C, etc.) |
-| Valuation | Numerisch | Unternehmensbewertung |
-| Status | Kategorial | Aktueller Status (Operating, Acquired, IPO, Closed) |
+| Years in Operation | Numerisch | Betriebsjahre |
+| Market Share (%) | Numerisch | Marktanteil in Prozent |
+| Customer Growth Rate (%) | Numerisch | Kundenwachstumsrate |
+| Profitable | Binär | Profitabilität (1 = profitabel, 0 = unprofitabel) |
 
 ## 🔍 Analyseschwerpunkte
 
-### 1. Datenimport & Vorbereitung
-- Laden und Inspektion der Startup-Daten
-- Data Cleaning (fehlende Werte, Duplikate, Ausreißer)
-- Datentyp-Konvertierung und Formatierung
+### Teil 1: Business Understanding & Datenexploration
+- **Business Kontext:** Zielsetzung, Geschäftsfragen, Warum Data Science?
+- **Explorative Datenanalyse (EDA):** 
+  - Vergleich profitabler vs. unprofitabler Startups (Umsatz, Bewertung, Mitarbeiter)
+  - Branchenverteilung und regionale Analyse
+  - Korrelationsanalyse (Pearson, Spearman)
+  - Identifikation von Verzerrungen (Bias-Analyse)
+  - Kapitaleffizienz-Analyse (Revenue per Invested Dollar)
+  - Marktanteil und Erfolgsfaktoren
 
-### 2. Explorative Datenanalyse (EDA)
-- Deskriptive Statistiken zu Finanzierung und Wachstum
-- Finanzierungsanalyse nach Branchen und Regionen
-- Zeitreihenanalyse (Gründungstrends, Funding-Wellen)
-- Erfolgsanalyse (Exits, IPOs, Bewertungsentwicklung)
+### Teil 2: Datenaufbereitung
+- **Fehlende Werte:** Identifikation und Behandlung
+- **Ausreißer-Behandlung:** IQR-Methode, Clipping-Strategien
+- **Feature Engineering:**
+  - Neue Metriken: Kapitaleffizienz, Branchenmarktanteil
+  - Binäre Features: High Valuation, High Revenue Growth
+  - Interaktionseffekte zwischen Features
 
-### 3. Visualisierungen
-- Finanzierungstrends über Zeit
-- Top-Branchen und Investitionsschwerpunkte
-- Geografische Verteilung von Startups und Funding
-- Erfolgsquoten nach Funding-Stage
+### Teil 3: Modellierung & Evaluation
+- **Modellauswahl:** Logistische Regression für binäre Klassifikation (Profitabel/Unprofitabel)
+- **Train-Test-Split:** 80/20-Aufteilung
+- **Feature Selection:** Relevante Prädiktoren identifizieren
+- **Evaluation:**
+  - Confusion Matrix (TP, FP, TN, FN)
+  - Accuracy, Precision, Recall, F1-Score
+  - Fokus auf Risikominimierung (False Positives reduzieren)
+- **Hyperparameter-Tuning:** Threshold-Optimierung
 
-### 4. Erkenntnisse & Handlungsempfehlungen
-- Wichtigste Erfolgsfaktoren
-- Branchentrends und Investitionsmuster
-- Limitationen der Analyse
+### Teil 4: Erkenntnisse & Handlungsempfehlungen
+- **Konkrete Investitionsempfehlungen**
+- **Modellgrenzen und Limitationen**
+- **Kritische Fragen:** Datenqualität, Repräsentativität, Kausalität
+- **Nächste Schritte:** Erweiterungsmöglichkeiten (größere Datensätze, Ensemble-Methoden, Survival Analysis)
 
 ## 🛠️ Verwendete Technologien
 
-- **Python 3.x**
-- **Jupyter Notebook**
+### Core Libraries
+- **Python 3.13**
+- **Jupyter Notebook / VS Code**
+
+### Data Processing & Analysis
 - **Pandas** - Datenmanipulation und -analyse
 - **NumPy** - Numerische Berechnungen
-- **Matplotlib** - Datenvisualisierung
-- **Seaborn** - Statistische Visualisierungen
+- **SciPy** - Statistische Tests und wissenschaftliche Berechnungen
+
+### Visualization
+- **Matplotlib** - Basis-Visualisierungen
+- **Seaborn** - Statistische Plots und Heatmaps
+- **Plotly Express** - Interaktive Visualisierungen (Bubble Charts, 3D-Plots)
+
+### Machine Learning
+- **Scikit-learn** - Logistische Regression, Train-Test-Split, Metriken
+- **IPython.display** - Notebook-Darstellung
 
 ## 🚀 Installation & Ausführung
 
 ### Voraussetzungen
-```bash
-Python 3.8 oder höher
-pip (Python Package Manager)
-```
+- **Python 3.8+** (empfohlen: 3.13)
+- **pip** (Python Package Manager)
+- **Jupyter Notebook** oder **VS Code mit Python Extension**
 
 ### Setup
-1. Repository klonen oder herunterladen
+
+#### Option 1: Automatische Installation (empfohlen)
+Das Notebook installiert automatisch alle benötigten Module beim ersten Ausführen der Installationszelle.
+
+1. **Repository klonen oder herunterladen**
 ```bash
 git clone <repository-url>
-cd DS-Projekt-Online-Retail
+cd DS-Projekt-Startup-Growth-final
 ```
 
-2. Benötigte Packages installieren
+2. **Notebook öffnen**
 ```bash
-pip install pandas numpy matplotlib seaborn jupyter
+jupyter notebook StartUp.ipynb
+# oder mit VS Code
+code StartUp.ipynb
 ```
 
-3. Jupyter Notebook starten
+3. **Erste Zellen ausführen** - Die Installation läuft automatisch
+
+#### Option 2: Manuelle Installation
 ```bash
-jupyter notebook project.ipynb
+pip install -r requirements.txt
 ```
 
-## 📊 Analysestruktur im Notebook
+Oder einzeln:
+```bash
+pip install pandas numpy matplotlib seaborn plotly scikit-learn scipy ipython
+```
 
-1. **Einführung & Datensatz**
-   - Problemstellung
-   - Datensatzbeschreibung
-   - Fragestellungen
+### Docker Setup (Optional)
+```bash
+docker build -t startup-analysis .
+docker run -p 8888:8888 startup-analysis
+```
 
-2. **Datenimport & Vorbereitung**
-   - Daten laden
-   - Erste Inspektion
-   - Data Cleaning
+## 📊 Notebook-Struktur (StartUp.ipynb)
 
-3. **Explorative Datenanalyse**
-   - Finanzierungsanalyse
-   - Zeitreihenanalyse
-   - Branchenanalyse
-   - Erfolgsanalyse
+### Teil 0: Setup
+- Automatische Modulinstallation
+- Import aller benötigten Libraries
+- Laden des Datensatzes (`startup_data.csv`)
 
-4. **Visualisierungen**
-   - Trends und Muster
-   - Vergleiche und Rankings
+### Teil 1: Business Understanding & Datenexploration
+1. **Business Kontext**
+   - Geschäftsproblem und Zielsetzung
+   - Warum Data Science für Startup-Investments?
+   
+2. **Explorative Datenanalyse (EDA)**
+   - **Graph V1:** Umsatzvergleich profitabel vs. unprofitabel
+   - **Graph V2:** Verteilung der Startups nach Industrie
+   - **Graph V3:** Regionale Verteilung
+   - **Graph V4:** Bewertung vs. Investitionssumme (Bubble Chart)
+   - **Graph V5:** 3D-Visualisierung (Marktanteil, Umsatz, Bewertung)
+   - **Graph V6:** Kapitaleffizienz-Analyse (Top 30 nach Revenue/Investment)
+   - **Korrelationsmatrix:** Pearson & Spearman
+   - **Bias-Analyse:** Identifikation systematischer Verzerrungen
+   - **Marktanteil-Analyse:** Korrelation mit Erfolgsmetriken
 
-5. **Erkenntnisse & Fazit**
-   - Key Findings
-   - Handlungsempfehlungen
+### Teil 2: Datenaufbereitung
+1. **Fehlende Werte behandeln**
+2. **Ausreißer-Erkennung und -Behandlung** (IQR-Methode)
+3. **Feature Engineering:**
+   - Kapitaleffizienz berechnen
+   - Branchenmarktanteil
+   - Binäre High-Performance-Features
 
-## 👥 Team
+### Teil 3: Modellierung
+1. **Modellauswahl:** Logistische Regression
+2. **Train-Test-Split** (80/20)
+3. **Feature Selection**
+4. **Model Training**
+5. **Evaluation:**
+   - Confusion Matrix
+   - Precision, Recall, F1-Score
+   - Threshold-Optimierung
+6. **Top-Startup-Empfehlungen** (nach Wahrscheinlichkeit sortiert)
 
-Projektarbeit im Rahmen des Kurses "Introduction to Data Science"
+### Teil 4: Insights & Next Steps
+1. **Konkrete Investitionsempfehlungen**
+2. **Modellgrenzen und Limitationen**
+3. **Kritische Reflexion:**
+   - Datenqualität
+   - Repräsentativität
+   - Kausalität vs. Korrelation
+4. **Weiterführende Analysemöglichkeiten:**
+   - Größere Datensätze
+   - Ensemble-Methoden
+   - Survival Analysis
+   - Kausalinferenz
+
+## 📈 Wichtigste Erkenntnisse
+
+### Datenanalyse-Insights
+- **Branchenverteilung:** EdTech und FinTech dominieren den Datensatz
+- **Regionale Unterschiede:** North America führt bei Investitionsvolumen
+- **Korrelationen:** Starker Zusammenhang zwischen Funding Amount und Valuation (r=0.8)
+- **Kapitaleffizienz:** Große Varianz zwischen Branchen und Startups
+- **Marktanteil:** Positiver, aber schwacher Zusammenhang mit Profitabilität
+
+### Modell-Performance
+- **Accuracy:** ~60%
+- **Precision:** Fokus auf Risikominimierung (False Positives reduzieren)
+- **Recall:** ~35% (Trade-off zugunsten höherer Precision)
+- **Ergebnis:** Modell schlägt Zufallsrate (50%) und reduziert Investitionsrisiko
+
+### Empfehlungen
+1. **Nicht blind investieren** - Top 10-20 Startups genauer prüfen
+2. **Portfolio-Diversifikation** - In mehrere vorgeschlagene Startups investieren
+3. **Qualitative Faktoren beachten** - Team, Vision, Produkt-Market-Fit
+4. **Datenbasiert entscheiden** - Bauchgefühl durch objektive Metriken ergänzen
+
+## 🚧 Limitationen
+
+- **Kleiner Datensatz:** Nur 500 Startups
+- **Survivorship Bias:** Gescheiterte Startups möglicherweise unterrepräsentiert
+- **Fehlende Features:** Gründerteam-Erfahrung, Netzwerkeffekte, Marktdynamiken
+- **Zeitliche Effekte:** Keine Normalisierung nach Unternehmensalter/Gründungsjahr
+- **Kausalität unklar:** Korrelation ≠ Kausalität
+
+## 🔮 Zukünftige Erweiterungen
+
+- Größerer Datensatz (5.000-10.000 Startups)
+- Ensemble-Methoden (Random Forest, Gradient Boosting)
+- Survival Analysis (Zeit bis Profitabilität)
+- NLP-Analyse von Pitch Decks und Business Plans
+- Einbindung makroökonomischer Variablen
+- Real-Time-Daten und API-Integration
+
+## 📝 Lizenz & Datenquelle
+
+**Datensatz:** [Startup Growth & Funding Trends - Kaggle](https://www.kaggle.com/datasets/samayashar/startup-growth-and-funding-trends)
+
+Der Datensatz wird gemäß der Kaggle-Nutzungsbedingungen verwendet. Dieses Projekt dient ausschließlich akademischen und Lernzwecken.
 
 ---
 
-**Hinweis:** Der Datensatz stammt von Kaggle und sollte gemäß der Kaggle-Nutzungsbedingungen verwendet werden.
+**Projektarbeit im Rahmen des Kurses "Introduction to Data Science"**  
+© 2025 | Tom Scheider, Mark Nolepa, Lukas Trölenberg, Silas Engel
